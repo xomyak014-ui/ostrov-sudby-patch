@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCUM: Into the Wild — Июньское обновление | Остров Судьбы</title>
+  <meta name="description" content="Русский перевод патчноутов SCUM 1.3.1.0.125621 — июньское обновление Into the Wild. Остров Судьбы.">
+  <meta property="og:title" content="SCUM: Into the Wild — Июньское обновление 1.3.1">
+  <meta property="og:description" content="Свободно бродящие животные, трофейная рыба, квест годовщины и сотни исправлений. Перевод для сообщества Остров Судьбы.">
+  <meta property="og:image" content="assets/4b9fcb6aba253dc2f6bc8074cc0b2e64ac2bc3f8.png">
+  <meta property="og:type" content="article">
+  <style>
+    :root {
+      --bg: #0d1110;
+      --bg-card: #151c1a;
+      --bg-card-hover: #1a2421;
+      --accent: #c4a35a;
+      --accent-dim: #8a7340;
+      --text: #e8e4dc;
+      --text-muted: #9a958a;
+      --border: #2a3530;
+      --danger: #c45c4a;
+      --success: #5a9e6e;
+      --code-bg: #0a0f0e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    .hero {
+      position: relative;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      background:
+        linear-gradient(180deg, rgba(13,17,16,.75) 0%, var(--bg) 100%),
+        url('assets/4b9fcb6aba253dc2f6bc8074cc0b2e64ac2bc3f8.png') center/cover;
+      border-bottom: 2px solid var(--accent-dim);
+    }
+
+    .community-badge {
+      display: inline-block;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: .85rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+      padding: .35rem 1rem;
+      margin-bottom: 1rem;
+      background: rgba(0,0,0,.5);
+    }
+
+    .hero h1 {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      line-height: 1.15;
+      margin-bottom: .5rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,.8);
+    }
+
+    .hero .version {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: center;
+      font-size: .9rem;
+      color: var(--text-muted);
+    }
+
+    .hero .meta span {
+      background: rgba(0,0,0,.45);
+      padding: .3rem .75rem;
+      border-radius: 4px;
+    }
+
+    .community-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: center;
+      margin-top: 1.25rem;
+    }
+
+    .community-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .65rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s, background .15s;
+    }
+
+    .community-links a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,.4);
+    }
+
+    .btn-discord {
+      background: #5865F2;
+      color: #fff;
+      border: 1px solid #4752c4;
+    }
+
+    .btn-discord:hover { background: #4752c4; }
+
+    .btn-wargm {
+      background: var(--bg-card);
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+    }
+
+    .btn-wargm:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+    }
+
+    .server-tagline {
+      margin-top: .75rem;
+      font-size: .9rem;
+      color: var(--text-muted);
+    }
+
+    .layout {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2.5rem;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .toc h2 {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--accent);
+      margin-bottom: .75rem;
+    }
+
+    .toc ol {
+      columns: 2;
+      column-gap: 2rem;
+      padding-left: 1.25rem;
+      font-size: .95rem;
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .toc a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .toc ol { columns: 1; }
+    }
+
+    section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 1rem;
+    }
+
+    h2.section-title {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    h3 {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--text);
+      margin: 1.5rem 0 .75rem;
+    }
+
+    p { margin-bottom: 1rem; }
+
+    .lead {
+      font-size: 1.15rem;
+      color: #f0ece4;
+    }
+
+    .media {
+      margin: 1.5rem 0;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    .media img, .media video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    .video-caption {
+      padding: .75rem 1rem;
+      font-size: .9rem;
+      color: var(--text-muted);
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+    }
+
+    .alert {
+      background: rgba(196, 92, 74, .12);
+      border: 1px solid rgba(196, 92, 74, .4);
+      border-left: 4px solid var(--danger);
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .alert strong { color: #e8a090; }
+
+    ul, ol {
+      margin: .75rem 0 1rem 1.5rem;
+    }
+
+    li { margin-bottom: .4rem; }
+
+    .fix-list {
+      list-style: none;
+      margin-left: 0;
+      padding: 0;
+    }
+
+    .fix-list li {
+      position: relative;
+      padding: .5rem 0 .5rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fix-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+    }
+
+    .fix-list li:last-child { border-bottom: none; }
+
+    code, .setting {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: .88rem;
+      background: var(--code-bg);
+      color: #a8d4b0;
+      padding: .15rem .4rem;
+      border-radius: 3px;
+      word-break: break-all;
+    }
+
+    .setting-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      border-radius: 6px;
+    }
+
+    .setting-block .name {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: .35rem;
+    }
+
+    .setting-block .path {
+      font-size: .85rem;
+      color: var(--text-muted);
+      margin-bottom: .5rem;
+    }
+
+    .dlc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .dlc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      border-radius: 6px;
+      transition: border-color .2s;
+    }
+
+    .dlc-card:hover { border-color: var(--accent-dim); }
+
+    .dlc-card a {
+      display: inline-block;
+      margin-top: .75rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .dlc-card a:hover { text-decoration: underline; }
+
+    .known-issues li::marker { color: var(--danger); }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: .9rem;
+    }
+
+    footer .brand {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 1.2rem;
+      color: var(--accent);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+
+    footer a { color: var(--accent); }
+
+    footer .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+
+    footer .footer-links a {
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer .footer-links a:hover { text-decoration: underline; }
+
+    .source-link {
+      font-size: .85rem;
+      color: var(--text-muted);
+      margin-top: .5rem;
+    }
+
+    .divider-img {
+      max-height: 80px;
+      object-fit: contain;
+      background: transparent;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="community-badge">Сообщество SCUM</div>
+  <h1>Остров Судьбы</h1>
+  <p class="version">SCUM: Into the Wild — Июньское обновление</p>
+  <div class="meta">
+    <span>Версия 1.3.1.0.125621</span>
+    <span>30 июня 2026</span>
+    <span>Русский перевод патчноутов</span>
+  </div>
+  <div class="community-links">
+    <a class="btn-discord" href="https://discord.gg/df8m4UmWmp" target="_blank" rel="noopener">Discord — Остров Судьбы</a>
+    <a class="btn-wargm" href="https://wargm.ru/server/81248" target="_blank" rel="noopener">Сервер на WarGM</a>
+  </div>
+  <p class="server-tagline">PvE RU · Loot x1.5 · Mods · 37.150.212.7:7790</p>
+</header>
+
+<main class="layout">
+
+  <nav class="toc">
+    <h2>Содержание</h2>
+    <ol>
+      <li><a href="#intro">Введение</a></li>
+      <li><a href="#dev-diary">Dev Diary</a></li>
+      <li><a href="#wipe">Вайп серверов</a></li>
+      <li><a href="#wildlife">Дикая природа</a></li>
+      <li><a href="#hunting">Охота в открытом мире</a></li>
+      <li><a href="#building">Развитие системы</a></li>
+      <li><a href="#quest">Квест годовщины</a></li>
+      <li><a href="#fish">Трофейная рыба</a></li>
+      <li><a href="#cooking">Импровизированная готовка</a></li>
+      <li><a href="#tombstones">Надгробия</a></li>
+      <li><a href="#dlc">DLC-паки</a></li>
+      <li><a href="#settings">Настройки серверов</a></li>
+      <li><a href="#fixes">Исправления</a></li>
+      <li><a href="#known">Известные проблемы</a></li>
+    </ol>
+  </nav>
+
+  <section id="intro">
+    <h2 class="section-title">Привет, заключённые!</h2>
+    <p class="lead"><strong>Свободно бродящие наземные животные вернулись!</strong></p>
+    <p>Июньское обновление <strong>Into the Wild</strong> возвращает дикую природу на Остров: ограниченный по времени квест к годовщине SCUM 1.0, настенные трофеи из рыбы, импровизированные рецепты готовки, настраиваемые надгробия, новые параметры кастомных серверов, исправления и другие улучшения по отзывам игроков.</p>
+  </section>
+
+  <section id="dev-diary">
+    <h2 class="section-title">Dev Diary: свободно бродящие животные</h2>
+    <p>Чтобы глубже понять работу над системой наземной дикой природы, посмотрите видеодневник разработчиков — он вышел вместе с обновлением:</p>
+    <div class="media">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/UKm5Jm8-yQA" title="SCUM Free-Roaming Animals Dev Diary" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-caption">
+        Официальный Dev Diary — свободно бродящие животные в SCUM<br>
+        <a href="https://www.youtube.com/watch?v=UKm5Jm8-yQA" target="_blank" rel="noopener" style="color: var(--accent);">Открыть на YouTube</a>, если плеер не загружается
+      </div>
+    </div>
+  </section>
+
+  <section id="wipe">
+    <div class="alert">
+      <p>Как и в <a href="https://steamcommunity.com/games/513710/announcements/detail/697641379212296318" target="_blank" rel="noopener">превью июньского обновления</a>, в этом патче на <strong>официальных серверах прошёл частичный вайп</strong>.</p>
+      <p><strong>Сохраняются:</strong> прогресс персонажа, золото и базовая стартовая экипировка.<br>
+      <strong>Сброшены:</strong> транспорт, базы и все остальные предметы на официальных серверах.</p>
+      <p>Мы понимаем, что вайп посреди сезона неудобен, и сожалеем о последствиях для затронутых игроков. В дальнейшем планируем привязывать запланированные вайпы к началу сезона, чтобы ожидания по крупным сбросам были понятнее.</p>
+    </div>
+
+    <div class="media">
+      <img src="assets/4b9fcb6aba253dc2f6bc8074cc0b2e64ac2bc3f8.png" alt="Свободно бродящие животные на Острове" loading="lazy">
+    </div>
+
+    <p>С возвращением свободно бродящих животных дикая природа снова — часть мира вокруг вас, а не отдельный «режим охоты».</p>
+    <p>Это <em>не</em> просто включение старой системы. Животных убрали из‑за производительности, поэтому возврат потребовал перестройки системы дикой природы под современный SCUM.</p>
+    <p>Теперь животные бродят по миру, а не появляются только в отдельном потоке охоты. Мини-игра охоты удалена — вы ищете, выслеживаете и охотитесь на животных прямо в мире.</p>
+
+    <div class="media">
+      <img src="assets/b8813659d25de5af72ba34f12ec5881eced36e37.gif" alt="Система LoD для животных" loading="lazy">
+    </div>
+
+    <p>В новой системе дикая природа зависит от места, обзора и того, что происходит вокруг: популяции по биомам, время суток, дистанция до игрока, видимость и ИИ животных с уровнем детализации (LoD).</p>
+    <p>Не каждое животное должно постоянно работать в полной симуляции. В зависимости от дистанции, видимости и активности игроков они переключаются между облегчённым и полным состоянием. Охота может начаться с движения на дальнем хребте, продолжиться по мере сближения и развиваться естественно — а не только когда зверь уже рядом.</p>
+  </section>
+
+  <section id="wildlife">
+    <div class="media">
+      <img src="assets/5357f0ca70d3f046fb6445f6fd1d6f3aa646c661.png" alt="Дикая природа по всему Острову" loading="lazy">
+    </div>
+
+    <h2 class="section-title">Дикая природа по всему Острову</h2>
+
+    <h3>Спавн животных по биомам</h3>
+    <p>Теперь наземные животные появляются через популяции, привязанные к биомам. Горы, леса, поля и другие зоны поддерживают разный набор зверей — у каждой части Острова свой «профиль» фауны.</p>
+
+    <h3>Популяции меняются со временем</h3>
+    <p>Популяции обновляются в течение игрового дня; время суток тоже влияет на спавн. Мир естественнее реагирует на охоту, замену и смещение животных внутри биома. Тихая зона утром может ожить к вечеру.</p>
+
+    <h3>Животные существуют за пределами вашей дистанции</h3>
+    <p>Новая система LoD удерживает дикую природу на Острове без постоянной полной нагрузки на сервер. Звери остаются в мире вдали или вне поля зрения, а при обнаружении, приближении или проходе через зону переходят в полностью активное состояние.</p>
+
+    <div class="media">
+      <img src="assets/cc736bb40f2a6dc1ea360a50b98e89564dc8d810.gif" alt="Охота в открытом мире" loading="lazy">
+    </div>
+  </section>
+
+  <section id="hunting">
+    <h2 class="section-title">Охота в открытом мире</h2>
+
+    <h3>Разведка — часть охоты</h3>
+    <p>Животное включается в охоту, когда вы замечаете его на дистанции при прямой видимости; увеличение прицела позволяет делать это издалека. Бинокли и оружие с оптикой получили более явную роль — есть смысл осматривать гребни, опушки и открытые участки до выхода на дистанцию. Используйте растительность и линию обзора для планирования подхода.</p>
+
+    <h3>Хищники делят территорию</h3>
+    <p>Из‑за популяций по биомам добыча и хищники могут оказаться в одних зонах. Разведывайте местность и следите, кто ещё рядом. Медведь за кромкой леса может быстро закончить охоту.</p>
+
+    <h3>Туши привлекают хищников</h3>
+    <p>Оставленная туша может притянуть ближайших хищников. Каждое убийство — шанс или проблема, если задержаться слишком долго.</p>
+
+    <div class="media">
+      <img src="assets/7d80306b8f32561584c0c1ca5cb65719bf90d09c.gif" alt="Туши привлекают хищников" loading="lazy">
+    </div>
+  </section>
+
+  <section id="building">
+    <h2 class="section-title">Развитие системы свободного перемещения</h2>
+
+    <h3>Кормушки с приманкой и популяции</h3>
+    <p>Кормушки (Bait Feeder) обновлены под новую систему популяций: привлекают существующих зверей поблизости или спавнят подходящее животное, если рядом никого нет.</p>
+
+    <h3>ИИ животных на Behavior Trees</h3>
+    <p>ИИ переведён на Behavior Trees в Unreal — прочнее база для поведения, настройки встреч и разнообразных угроз в будущих патчах.</p>
+
+    <h3>Сейчас фокус на наземных животных</h3>
+    <p>Обновление в первую очередь про наземных зверей: выслеживание, охота, хищники и туши в открытом мире. Куклы, NPC, птицы и прочий спавн — отдельные системы, но эта работа задаёт фундамент для дальнейших улучшений.</p>
+
+    <div class="media">
+      <img src="assets/442c16e74b72be4bd78c02ee5f511ac255848b3b.gif" alt="Кормушки с приманкой" loading="lazy">
+    </div>
+
+    <h3>Спасибо участникам Public Alpha</h3>
+    <p>Спасибо всем, кто участвовал в публичной альфе свободно бродящих животных. Ваши отзывы помогли проверить систему на реальных серверах, найти краевые случаи и донастроить спавн, движение, бегство, смерть и взаимодействие с миром.</p>
+    <p>Это важный фундамент дикой природы в SCUM. По мере того как игроки осваивают систему, мы продолжим следить за поведением в лайве и улучшать ИИ.</p>
+
+    <div class="media">
+      <img src="assets/3c71141b98037e2ce12a27e6bc7fa76a05c575b8.png" alt="Благодарность участникам альфы" loading="lazy">
+    </div>
+  </section>
+
+  <section id="quest">
+    <div class="media">
+      <img src="assets/5bcab67b2f30c66627606eb09290563bd5326206.png" alt="Квест годовщины SCUM 1.0" loading="lazy">
+    </div>
+
+    <h2 class="section-title">Квест годовщины SCUM 1.0</h2>
+    <p class="lead">Охотник оставил след по всему Острову. Пройдите его, выживите — и получите рецепт эксклюзивного скина оружия <strong>Carbon Hunter Ironpaw</strong>.</p>
+    <p><strong>Квест ограничен по времени — до 31 июля.</strong> Начать можно у торговца-охотника. Предыдущий прогресс квестов не нужен — все заключённые могут стартовать сразу.</p>
+    <p>С возвращением свободно бродящих животных квест даёт ещё один повод уйти в дикую природу, собрать страницы дневника и доказать себя в новой охоте.</p>
+    <p>После разблокировки Ironpaw крафтится из Carbon Hunter и ящика с инструментами — как другие варианты скинов оружия.</p>
+
+    <div class="media">
+      <img src="assets/1f5547216a27a21a80798ccb04465396b2aed441.png" alt="Carbon Hunter Ironpaw" loading="lazy">
+    </div>
+  </section>
+
+  <section id="fish">
+    <h2 class="section-title">Настенные трофеи из рыбы</h2>
+    <p>Редкую трофейную рыбу можно поймать на отдельных точках. Карп, тунец, сом, щука и дентекс превращаются в декоративные трофеи для базы.</p>
+
+    <div class="media">
+      <img src="assets/482dbd7cb36d6e002fcbec96c9171d3711716d4f.png" alt="Трофейная рыба на стене" loading="lazy">
+    </div>
+
+    <p>Трофейная рыба отделена от обычной. Пойманную можно разделать на голову, из которой при помощи деревянной доски и острого инструмента делается настенный трофей.</p>
+    <p>Повесьте на стену — пусть отряд поверит вашим рыбацким историям.</p>
+  </section>
+
+  <section id="cooking">
+    <h2 class="section-title">Импровизированные рецепты готовки</h2>
+    <p>Добавлены первые импровизированные рецепты — проще превратить базовые ингредиенты в готовое блюдо.</p>
+    <p>Теперь можно приготовить:</p>
+    <ul>
+      <li><strong>Импровизированная паста</strong></li>
+      <li><strong>Импровизированный рис</strong></li>
+      <li><strong>Импровизированный суп</strong></li>
+      <li><strong>Импровизированное рагу</strong></li>
+    </ul>
+
+    <div class="media">
+      <img src="assets/941248be33c7eb52ea58f68bbed2874d7c7b53ca.png" alt="Импровизированная готовка" loading="lazy">
+    </div>
+
+    <p>В отличие от многих рецептов, импровизированные доступны по умолчанию и не требуют кулинарной книги. Нужны простые базовые ингредиенты, плюс опциональные для улучшения блюда при наличии запасов.</p>
+    <p>Качественные ингредиенты по-прежнему помогают, но теперь можно сварить что-то полезное без длинного точного списка.</p>
+  </section>
+
+  <section id="tombstones">
+    <h2 class="section-title">Надгробия</h2>
+    <p>Игроки просили больше способов отмечать важные места, в том числе память об участниках сообщества. Добавлено крафтуемое надгробие с пользовательским текстом.</p>
+    <p>Память, предупреждение, угроза или то, за что заслужил напарник. Старайтесь не ошибаться в орфографии.</p>
+    <p>Крафт по чертежу: камни и любой молоток. После установки удерживайте <strong>F</strong>, чтобы вписать текст на камне.</p>
+
+    <div class="media">
+      <img src="assets/d915664220abc6bcbd018c0afe6209b9b1b0b400.png" alt="Надгробия" loading="lazy">
+    </div>
+
+    <p>Ставить можно там, где поддерживается чертёж, но надгробие нужно обслуживать. По умолчанию без ухода оно разрушается через <strong>30 дней</strong>. На официальных серверах лимит — <strong>3 на отряд</strong> (владельцы серверов могут задать от 0 до 100).</p>
+  </section>
+
+  <section id="dlc">
+    <div class="media">
+      <img src="assets/34f8bfac25bbb5ea3741aea471675e7fe0c81617.png" alt="DLC Into the Wild" loading="lazy">
+    </div>
+
+    <h2 class="section-title">Новые DLC-паки</h2>
+    <p>Вместе с июньским обновлением вышли два опциональных DLC в тематике Into the Wild. Они отделены от бесплатного контента патча.</p>
+
+    <div class="dlc-grid">
+      <div class="dlc-card">
+        <h3>Specialist Archer Pack</h3>
+        <p>Снаряжение специалиста в стиле змеиной кожи, амулеты, эмоции и камуфляж.</p>
+        <a href="https://store.steampowered.com/app/4635240/SCUM_Specialist_Archer_Pack/" target="_blank" rel="noopener">Открыть в Steam →</a>
+      </div>
+      <div class="dlc-card">
+        <h3>Specialist Scout Pack</h3>
+        <p>Снаряжение разведчика, амулеты, эмоции и камуфляж.</p>
+        <a href="https://store.steampowered.com/app/4635250/SCUM_Specialist_Scout_Pack/" target="_blank" rel="noopener">Открыть в Steam →</a>
+      </div>
+    </div>
+
+    <div class="media">
+      <img src="assets/0a9e94f28f7168a7c152c39eeea5f304f759d98b.png" alt="" class="divider-img" loading="lazy">
+      <img src="assets/e74b7def554ac2e5a9dbe9e439b2782916f39a8f.png" alt="DLC превью" loading="lazy">
+    </div>
+  </section>
+
+  <section id="settings">
+    <h2 class="section-title">Настройки кастомных серверов</h2>
+    <p>Новые параметры для свободно бродящих животных, рыбалки, радиации, владения флагами и надгробий. Удалены старые настройки охоты, не используемые новой системой. Часть настроек транспорта объединена с общими лимитами.</p>
+
+    <h3>Свободно бродящие животные</h3>
+
+    <div class="setting-block">
+      <div class="name">Animals Allowed in World</div>
+      <div class="path">[World] → HUNTING</div>
+      <code>scum.AreAnimalsAllowedInWorld=True</code>
+      <p>Включает или отключает свободно бродящих животных в мире.</p>
+    </div>
+
+    <div class="setting-block">
+      <div class="name">Animal Global Density Multiplier</div>
+      <div class="path">[World] → HUNTING</div>
+      <code>scum.AnimalGlobalDensityMultiplier=1.000000</code>
+      <p>Глобальный множитель плотности животных. По умолчанию: 1 · Мин: 0 · Макс: 25</p>
+    </div>
+
+    <div class="setting-block">
+      <div class="name">Maximum Non-Virtual Animals in World</div>
+      <div class="path">[World] → HUNTING</div>
+      <code>scum.MaxNonVirtualAnimalsInWorld=800</code>
+      <p>Максимум «реальных» акторов животных одновременно. По умолчанию: 800 · Мин: 0 · Макс: 2500</p>
+    </div>
+
+    <div class="setting-block">
+      <div class="name">Animal Population Representation Multipliers</div>
+      <div class="path">[World] → HUNTING</div>
+      <p>Доля каждого вида в биомах, где он разрешён. По умолчанию: 1 · Мин: 0 · Макс: 100</p>
+      <p>Пример: в биоме с медведями и козами увеличение множителя медведей или снижение коз делает медведей чаще.</p>
+      <ul>
+        <li><code>scum.BearPrevalenceMultiplier</code> — медведи</li>
+        <li><code>scum.BoarPrevalenceMultiplier</code> — кабаны</li>
+        <li><code>scum.ChickenPrevalenceMultiplier</code> — куры</li>
+        <li><code>scum.DeerPrevalenceMultiplier</code> — олени</li>
+        <li><code>scum.DonkeyPrevalenceMultiplier</code> — ослы</li>
+        <li><code>scum.GoatPrevalenceMultiplier</code> — козы</li>
+        <li><code>scum.HorsePrevalenceMultiplier</code> — лошади</li>
+        <li><code>scum.RabbitPrevalenceMultiplier</code> — кролики</li>
+        <li><code>scum.WolfPrevalenceMultiplier</code> — волки</li>
+      </ul>
+    </div>
+
+    <h3>Рыбалка</h3>
+    <div class="setting-block">
+      <div class="name">High-Activity Fishing Spots</div>
+      <div class="path">[World] → HUNTING</div>
+      <code>scum.FishingHighActivityZoneAmount=-1.000000</code>
+      <p>Число «горячих» точек рыбалки. По умолчанию 10% точек всегда активны. Мин: 0% · Макс: 100%</p>
+    </div>
+
+    <h3>Радиация</h3>
+    <div class="setting-block">
+      <div class="name">Radiation Enabled</div>
+      <div class="path">[World] → MAP</div>
+      <code>scum.RadiationEnabled=True</code>
+      <p>Включает или отключает радиацию в мире.</p>
+    </div>
+
+    <h3>Владение флагами</h3>
+    <div class="setting-block">
+      <div class="name">Maximum Flags Per Prisoner</div>
+      <div class="path">[Features] → BASE BUILDING</div>
+      <code>scum.NumberOfAllowedFlagsPerPlayer=10</code>
+      <p>Сколько флагов может иметь заключённый. Нужен <code>scum.AllowMultipleFlagsPerPlayer</code>. По умолчанию: 10 · Мин: 1 · Макс: 30</p>
+    </div>
+
+    <h3>Надгробия</h3>
+    <div class="setting-block">
+      <div class="name">Maximum Tombstones Per Squad</div>
+      <div class="path">[Features] → BASE BUILDING</div>
+      <code>scum.TombstoneMaxAmountPerSquad</code>
+      <p>Лимит надгробий на отряд. По умолчанию: 3 · Мин: 0 · Макс: 100</p>
+    </div>
+
+    <h3>Объединённые настройки транспорта</h3>
+    <p>Отдельные <code>MaxFunctionalAmount</code> для ряда транспорта убраны и сведены к общим лимитам:</p>
+    <p><code>scum.KingletDusterMaxFunctionalAmount · scum.MotorboatMaxFunctionalAmount · scum.WheelbarrowMaxFunctionalAmount · scum.BicycleMaxFunctionalAmount · scum.SUPMaxFunctionalAmount · scum.KingletMarinerMaxFunctionalAmount · scum.DinghyMaxFunctionalAmount</code></p>
+
+    <h3>Удалённые настройки</h3>
+    <p>Больше недоступны (многие относились к старой системе охоты):</p>
+    <p><code>scum.PuppetLimpingEnabled</code> (заменено порогом здоровья для хромоты кукол = 0), <code>scum.ArmedNPCLimpingEnabled</code>, <code>scum.MaxAllowedAnimals</code>, <code>scum.MaxAllowedHunts</code>, <code>scum.AnimalWorldEncounterSpawnWeightMultiplier</code>, все <code>HuntTriggerChanceOverride_*</code>, <code>scum.HuntFailureTime</code>, <code>scum.HuntFailureDistance</code>, <code>scum.NPCWorldEncounterSpawnWeightMultiplier</code>, <code>scum.MasterServerEndpoints</code></p>
+  </section>
+
+  <section id="fixes">
+    <div class="media">
+      <img src="assets/2fbf949cbb92a7ea500f1992a719f81c53ed736e.png" alt="Исправления и улучшения" loading="lazy">
+    </div>
+
+    <h2 class="section-title">Исправления</h2>
+
+    <h3>Вылеты (Crashes)</h3>
+    <ul class="fix-list">
+      <li>Вылет при открытии радиального меню сразу после перезахода.</li>
+      <li>Клиентский вылет при смене скина или разрушении элементов базы Woodland.</li>
+      <li>Клиентский вылет при открытии консоли или чата в режиме дрона.</li>
+    </ul>
+
+    <h3>Эксплойты</h3>
+    <ul class="fix-list">
+      <li>Несколько эксплойтов с часовыми (нежелательный фарм/лут).</li>
+      <li>Фарм медведей через кормушку с приманкой.</li>
+      <li>Бесконечные патроны: продажа коробки 1/30 торговцу без такой коробки в наличии и покупка обратно 30/30.</li>
+      <li>Уничтожение транспорта в защищённых зонах через гранату с выдернутой чекой на земле.</li>
+    </ul>
+
+    <h3>Приватные серверы</h3>
+    <ul class="fix-list">
+      <li>Игроки не могли подключиться из‑за ICMP-проверок — исправлено; достаточно стандартного проброса портов.</li>
+    </ul>
+
+    <h3>Охота и готовка</h3>
+    <ul class="fix-list">
+      <li>Индикатор топлива у коптилен и других объектов с огнём.</li>
+      <li>Фрукты/семена в кормушке становились «вечными» и курили бесконечно.</li>
+      <li>Козы не оставляли следов.</li>
+      <li>Рога давали только самцы оленей, не самки.</li>
+      <li>RPG и гранатомёты корректно влияют на качество добычи с животных.</li>
+      <li>Убран лишний «Поиск» у убитых огнемётом (нет снарядов для извлечения).</li>
+      <li>Огнемёт, транспорт и турели больше не дают 100% качество мяса/шкуры.</li>
+      <li>Копчёное мясо не пропадает из коптильни после выхода в меню (Sandbox).</li>
+      <li>Исправлены ингредиенты горячего шоколада и работа кормушек/приманок (в т.ч. под водой, в городах, в пещерах).</li>
+      <li>Деградация лута от пуль зависит от пробития снаряда.</li>
+    </ul>
+
+    <h3>Квесты и задания</h3>
+    <ul class="fix-list">
+      <li>Задание с кормушками возвращено и адаптировано под новую систему животных.</li>
+      <li>Квесты показываются как обучающие шаги — виден текущий этап, следующий открывается после выполнения.</li>
+      <li>Исправлены подзадачи охоты (кроличий корм, зона торговца), переименование туториала, отказ от квеста, сброс лимитов покупок у торговца.</li>
+    </ul>
+
+    <h3>Рыбалка и фермерство</h3>
+    <ul class="fix-list">
+      <li>Полив растений в мультиплеере, таймер урожая, UI холода при высокой температуре.</li>
+      <li>Поломка удочки в мини-игре, полив без эффекта, блокировка низкорослых растений ветками деревьев.</li>
+      <li>Красная наживка Boilies в модели и инвентаре.</li>
+    </ul>
+
+    <h3>Оружие</h3>
+    <ul class="fix-list">
+      <li>Краска для обвесов оружия.</li>
+      <li>Мерцание оптики, обрезанные деления PU на M1891 и др., копьё Wushu, стрелы для других игроков.</li>
+      <li>Метательные ножи залипают в цели; единообразное именование .30-06.</li>
+    </ul>
+
+    <h3>Строительство базы</h3>
+    <ul class="fix-list">
+      <li>Флаги отряда поверх стоек/ламп/трофеев, лестницы и двери, люстры Woodland/Improvised.</li>
+      <li>Декоративный камин в Woodland Furniture Pack, лог разрушений, переводы CN, улучшенные меши размещения.</li>
+    </ul>
+
+    <h3>Торговцы</h3>
+    <ul class="fix-list">
+      <li>Единое имя «Охотник», названия гилли, корзина охотника, иконки перчаток/MRE/рубашки, запятая в economy.json.</li>
+    </ul>
+
+    <h3>Интерфейс</h3>
+    <ul class="fix-list">
+      <li>Иконки в быстром доступе, перекрытие рецептов, курица с «жидкостью», размытая куртка, жидкости в Sandbox.</li>
+      <li>Дубли «Кости» в супе, перец в овощах на гриле, чат и поломка оружия.</li>
+    </ul>
+
+    <h3>Анимации</h3>
+    <ul class="fix-list">
+      <li>Кормушка от первого лица, хват ножа и арбалета, бутылки при питье.</li>
+    </ul>
+
+    <h3>Звук</h3>
+    <ul class="fix-list">
+      <li>Эффект разрушения базы, шаги по пням, гул ветряков, субтитры при нулевой громкости голоса.</li>
+    </ul>
+
+    <h3>Графика</h3>
+    <ul class="fix-list">
+      <li>Цвет пролитой жидкости, отражения океана, пост-эффекты, свечение стекла и жидкостей в темноте.</li>
+    </ul>
+
+    <h3>Дизайн уровней</h3>
+    <ul class="fix-list">
+      <li>Дождь в бункерах B0/D4, река C0, застревания в Grotto охотника, десятки мелких правок по карте.</li>
+    </ul>
+
+    <h3>Прочее</h3>
+    <ul class="fix-list">
+      <li>Краска сундуков вне зоны флага, труп в Sandbox, камера при столкновении с животным в транспорте.</li>
+      <li>Фонари без батареек, мугшот персонажа, позиция на крыше ТС, Snow Deluxe Hoodie, металлоискатель в кобуре.</li>
+      <li>Исчезающие трупы на экране респавна, облучение напитков, клип одежды на теле 8/5/5, навигация NPC в аэропорту.</li>
+    </ul>
+  </section>
+
+  <section id="known">
+    <h2 class="section-title">Известные проблемы</h2>
+    <p>Мы продолжаем отслеживать и донастраивать после релиза:</p>
+    <ul class="known-issues">
+      <li>Слишком резкие повороты крупных животных в некоторых ситуациях.</li>
+      <li>Следы на твёрдых поверхностях, включая бетонные дороги.</li>
+      <li>Не всегда ожидаемый урон от огнестрела и хедшотов.</li>
+      <li>Животные в прицеле иногда остаются в дальнем LoD.</li>
+      <li>Текст на надгробиях может обрезаться или переноситься криво.</li>
+      <li>Иконки предметов в отдельных чертежах/квестах.</li>
+      <li>Краска/обвесы в редких случаях.</li>
+      <li>Предметы в колчанах/кобурах невидимы после снятия с трупа в мультиплеере (помогает релог).</li>
+    </ul>
+
+    <p style="margin-top: 2rem;"><strong>На этом июньское обновление!</strong></p>
+    <p>Into the Wild продолжится в июле — больше поводов углубиться в Остров.</p>
+    <p>Спасибо, что играете, делитесь отзывами и остаётесь с нами. Увидимся на Острове!</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="brand">Остров Судьбы</div>
+  <p>Русский перевод патчноутов для игроков нашего PvE-сервера</p>
+  <div class="footer-links">
+    <a href="https://discord.gg/df8m4UmWmp" target="_blank" rel="noopener">Discord</a>
+    <a href="https://wargm.ru/server/81248" target="_blank" rel="noopener">WarGM — страница сервера</a>
+  </div>
+  <p class="source-link">
+    Оригинал патчноутов:
+    <a href="https://store.steampowered.com/news/app/513710/view/701020348316910158" target="_blank" rel="noopener">Steam — SCUM June Update 1.3.1.0.125621</a>
+  </p>
+</footer>
+
+</body>
+</html>
