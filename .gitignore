@@ -1,0 +1,6 @@
+
+# Discord bot secrets
+discord-bot/.env
+discord-bot/node_modules/
+discord-bot/logs/
+discord-bot/data/*.json

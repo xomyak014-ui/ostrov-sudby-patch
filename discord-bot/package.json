@@ -1,0 +1,19 @@
+{
+  "name": "ostrov-sudby-discord-bot",
+  "version": "1.0.0",
+  "description": "Discord-бот сервера Остров Судьбы — система тикетов",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:safe": "node src/watchdog.js",
+    "dev": "node --watch src/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7"
+  }
+}
