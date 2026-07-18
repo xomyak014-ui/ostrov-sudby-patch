@@ -4,6 +4,7 @@ const {
   ButtonStyle,
   ChannelType,
   EmbedBuilder,
+  MessageFlags,
   PermissionFlagsBits,
 } = require('discord.js');
 const store = require('./ticketStore');
@@ -90,11 +91,11 @@ async function createTicket(interaction) {
   if (existing) {
     return interaction.reply({
       content: `У вас уже есть открытый тикет: <#${existing.channelId}>`,
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
   }
 
-  await interaction.deferReply({ ephemeral: true });
+  await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
   const guild = interaction.guild;
   const number = store.nextNumber();
@@ -183,7 +184,7 @@ async function requestClose(interaction) {
   if (!ticket || ticket.status !== 'open') {
     return interaction.reply({
       content: 'Это не активный канал тикета.',
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
   }
 
@@ -196,7 +197,7 @@ async function requestClose(interaction) {
   if (!isOwner && !isStaff) {
     return interaction.reply({
       content: 'Закрыть тикет может только автор или поддержка.',
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
   }
 
@@ -214,7 +215,7 @@ async function requestClose(interaction) {
   return interaction.reply({
     content: 'Закрыть этот тикет? Канал будет удалён через несколько секунд.',
     components: [row],
-    ephemeral: true,
+    flags: MessageFlags.Ephemeral,
   });
 }
 
@@ -223,7 +224,7 @@ async function confirmClose(interaction) {
   if (!ticket || ticket.status !== 'open') {
     return interaction.reply({
       content: 'Тикет уже закрыт или не найден.',
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
   }
 
@@ -287,7 +288,7 @@ async function handleInteraction(interaction) {
     logger.error('Ошибка обработки кнопки тикета', err);
     const payload = {
       content: 'Произошла ошибка. Попробуйте ещё раз чуть позже.',
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     };
     if (interaction.deferred || interaction.replied) {
       await interaction.followUp(payload).catch(() => {});
