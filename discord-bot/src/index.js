@@ -28,7 +28,7 @@ const client = new Client({
 let ready = false;
 let shuttingDown = false;
 
-client.once('ready', async () => {
+client.once('clientReady', async () => {
   ready = true;
   logger.info(`Бот вошёл как ${client.user.tag}`);
   client.user.setActivity('Остров Судьбы | тикеты', { type: ActivityType.Watching });
