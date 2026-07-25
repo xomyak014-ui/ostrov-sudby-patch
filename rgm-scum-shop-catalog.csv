@@ -1,0 +1,81 @@
+﻿category,name,code,game_price,votes,rubles,note
+Валюта,1 000 000$,—,1000000,40,680,Пакет игровой валюты
+Валюта,500 000$,—,500000,22,374,Пакет игровой валюты
+Валюта,250 000$,—,250000,12,204,Пакет игровой валюты
+Валюта,100 000$,—,100000,5,85,Пакет игровой валюты
+Валюта,50 000$,—,50000,3,51,Пакет игровой валюты
+Наборы,Снайперский набор,—,0,25,425,SVD/AWP + прицел + патроны
+Наборы,PVP набор,—,0,18,306,Хорошая броня + штурмовая + аптечка
+Наборы,Набор выжившего,—,0,10,170,Броня + АК/аналог + патроны + мед
+Наборы,Стартовый набор,—,0,5,85,Одежда + рюкзак + еда + пистолет + патроны
+VIP,VIP 90 дней,—,0,75,1275,VIP на 3 месяца
+VIP,VIP 30 дней,—,0,30,510,VIP-привилегии на месяц (скины/киты по правилам сервера)
+Транспорт,Rager,BPC_Rager,743500,71,1207,Rager (топ)
+Транспорт,Laika,BPC_Laika,669150,64,1088,Лайка
+Транспорт,WolfsWagen,BPC_WolfsWagen,669150,64,1088,WolfsWagen
+Транспорт,Tractor,BPC_Tractor,594800,57,969,Трактор
+Транспорт,RIS,BPC_RIS,520450,49,833,RIS
+Транспорт,Sidecar Bike,BPC_SidecarBike,438545,43,731,Мотоцикл с коляской
+Транспорт,Cruiser,BPC_Cruiser,386620,37,629,Круизер
+Транспорт,Dirtbike,BPC_Dirtbike,371750,36,612,Мотоцикл кросс
+Оружие,SVD Dragunov,Weapon_SVD_Dragunov,356880,30,510,Снайперка топ
+Оружие,M249,Weapon_M249,309296,26,442,Пулемёт
+Оружие,RPK-74,Weapon_RPK-74,285504,24,408,Пулемёт
+Оружие,SCAR DMR,Weapon_SCAR_DMR,261712,22,374,DMR
+Оружие,AWM,Weapon_AWM,237920,20,340,Снайперка
+Оружие,AWP,Weapon_AWP,237920,20,340,Снайперка
+Оружие,AT4 HEAT,Weapon_AT4_HEAT,214128,18,306,РПГ / осторожно с балансом
+Оружие,VHS-2,Weapon_VHS2,214128,18,306,Штурмовая
+Оружие,AK-15,Weapon_AK15,190336,16,272,Штурмовая
+Оружие,MK18,Weapon_MK18,190336,16,272,Штурмовая
+Оружие,VSS,Weapon_VSS_VZ,190336,16,272,Бесшумная
+Оружие,AK-47,Weapon_AK47,166544,14,238,Классика
+Оружие,AKM,Weapon_AKM,166544,14,238,Классика
+Оружие,Kar98k,Weapon_98k_Karabiner,166544,14,238,Болтовка
+Оружие,M16A4,Weapon_M16A4,166544,14,238,Штурмовая
+Оружие,SCAR-L,Weapon_SCAR_L,166544,14,238,Штурмовая
+Оружие,SKS,Weapon_SKS,168923,14,238,Карабин
+Оружие,M1 Garand,Weapon_M1_Garand,142752,12,204,Винтовка
+Оружие,Mosin,Weapon_MosinNagant,142752,12,204,Болтовка
+Оружие,AKS-74U,Weapon_AKS_74U,130856,11,187,Коротыш
+Оружие,SDASS,Weapon_SDASS,118960,10,170,Дробовик
+Оружие,Trench Gun,Weapon_Trench_Gun,118960,10,170,Дробовик
+Оружие,AS Val,Weapon_AS_Val,107064,9,153,Бесшумная
+Оружие,MP5-SD,Weapon_MP5_SD,107064,9,153,ПП
+Оружие,MP5,Weapon_MP5,95168,8,136,ПП
+Оружие,Mac-10,Weapon_Mac10,95168,8,136,ПП
+Оружие,UMP45,Weapon_UMP45,95168,8,136,ПП
+Броня,K6-3 Helmet,K6-3_Helmet,37844,3,51,Броня/шлем
+Броня,Bulletproof Vest 01,Bulletproof_Vest_01,21413,2,34,Броня/шлем
+Броня,Bulletproof Vest 01 02,Bulletproof_Vest_01_02,21413,2,34,Броня/шлем
+Броня,Bulletproof Vest 01 03,Bulletproof_Vest_01_03,21413,2,34,Броня/шлем
+Броня,Bulletproof Vest 01 04,Bulletproof_Vest_01_04,21413,2,34,Броня/шлем
+Броня,Bulletproof Vest 01 05,Bulletproof_Vest_01_05,21413,2,34,Броня/шлем
+Броня,Combat Helmet 01,Combat_Helmet_01,21413,2,34,Броня/шлем
+Броня,Combat Helmet 02,Combat_Helmet_02,21413,2,34,Броня/шлем
+Броня,Combat Helmet 03,Combat_Helmet_03,21413,2,34,Броня/шлем
+Броня,Combat Helmet 04,Combat_Helmet_04,21413,2,34,Броня/шлем
+Броня,Police Bulletproof Vest 01,Police_Bulletproof_Vest_01,21413,2,34,Броня/шлем
+Рюкзаки,Hiking Backpack Tyrone,Hiking_Backpack_Tyrone,31413,3,51,Рюкзак
+Рюкзаки,Hiking Backpack 01 01,Hiking_Backpack_01_01,21413,2,34,Рюкзак
+Рюкзаки,Hiking Backpack 01 02,Hiking_Backpack_01_02,21413,2,34,Рюкзак
+Рюкзаки,Hiking Backpack 01 03,Hiking_Backpack_01_03,21413,2,34,Рюкзак
+Рюкзаки,Hiking Backpack 01 04,Hiking_Backpack_01_04,21413,2,34,Рюкзак
+Рюкзаки,Hiking Backpack 01 05,Hiking_Backpack_01_05,21413,2,34,Рюкзак
+Рюкзаки,Military Backpack 02 01,Military_Backpack_02_01,21413,2,34,Рюкзак
+Рюкзаки,Military Backpack 02 02,Military_Backpack_02_02,21413,2,34,Рюкзак
+Рюкзаки,Military Backpack 02 03,Military_Backpack_02_03,26766,2,34,Рюкзак
+Рюкзаки,Military Backpack 02 04,Military_Backpack_02_04,26766,2,34,Рюкзак
+Рюкзаки,Military Backpack 02 05,Military_Backpack_02_05,26766,2,34,Рюкзак
+Рюкзаки,Military Backpack 02 06,Military_Backpack_02_06,26766,2,34,Рюкзак
+Рюкзаки,Military Backpack 02 07,Military_Backpack_02_07,26766,2,34,Рюкзак
+Рюкзаки,Military Backpack 02 08,Military_Backpack_02_08,26766,2,34,Рюкзак
+Рюкзаки,Police Backpack 02,Police_Backpack_02,26766,2,34,Рюкзак
+База,Base Expansion Kit Lvl2,BaseExpansionKit_Lvl2,175098,15,255,Расширение базы 2
+База,Base Expansion Kit Lvl1,BaseExpansionKit_Lvl1,104464,9,153,Расширение базы 1
+Медицина,Activated Charcoal x3,ActivatedCharcoal_03,89220,7,119,Уголь
+Медицина,Antibiotics x3 pack,Antibiotics_03,89220,7,119,Антибиотики
+Медицина,Painkillers x3,PainKillers_03,71376,6,102,Обезболивающее
+Снаряжение,Claymore,Claymore,81785,8,136,Мина — осторожно с балансом
+Снаряжение,Night Vision,Night_Vision_Goggles_01,81785,7,119,ПНВ
+Снаряжение,Mine,Mine_01,65428,6,102,Мина
